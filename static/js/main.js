@@ -86,16 +86,83 @@ function imageVerification(callback) {
 }
 
 function search() {
-    mdui.prompt('支持从名字、表白内容中搜索', '搜索',
-        function(value) {
-            setTimeout(function() {
-                $.pjax({
-                    url: '/?search=' + value,
-                    container: '#pjax-container'
-                });
-            }, 10)
-        }
-    )
+    var content = `
+        <div class="mdui-textfield" style="margin-bottom: 16px;">
+            <label class="mdui-textfield-label">关键词</label>
+            <input class="mdui-textfield-input" id="searchKeyword" placeholder="支持从名字、表白内容中搜索" />
+        </div>
+        
+        <div class="mdui-row" style="margin-bottom: 16px;">
+            <div class="mdui-col-xs-6">
+                <div class="mdui-textfield">
+                    <label class="mdui-textfield-label">开始日期（可选）</label>
+                    <input class="mdui-textfield-input" id="startDate" type="date" />
+                </div>
+            </div>
+            <div class="mdui-col-xs-6">
+                <div class="mdui-textfield">
+                    <label class="mdui-textfield-label">结束日期（可选）</label>
+                    <input class="mdui-textfield-input" id="endDate" type="date" />
+                </div>
+            </div>
+        </div>
+        
+        <div class="mdui-row">
+            <div class="mdui-col-xs-6">
+                <label class="mdui-checkbox">
+                    <input type="checkbox" id="hasImage" />
+                    <i class="mdui-checkbox-icon"></i>
+                    包含图片
+                </label>
+            </div>
+            <div class="mdui-col-xs-6">
+                <label class="mdui-checkbox">
+                    <input type="checkbox" id="hasVideo" />
+                    <i class="mdui-checkbox-icon"></i>
+                    包含视频
+                </label>
+            </div>
+        </div>
+    `;
+    
+    mdui.dialog({
+        title: '高级搜索',
+        content: content,
+        modal: true,
+        buttons: [{
+                text: '取消'
+            },
+            {
+                text: '搜索',
+                onClick: function(inst) {
+                    var keyword = $('#searchKeyword').val();
+                    var startDate = $('#startDate').val();
+                    var endDate = $('#endDate').val();
+                    var hasImage = $('#hasImage').is(':checked');
+                    var hasVideo = $('#hasVideo').is(':checked');
+                    
+                    // 构建搜索URL
+                    var searchParams = {};
+                    if (keyword) searchParams.search = keyword;
+                    if (startDate) searchParams.start = startDate;
+                    if (endDate) searchParams.end = endDate;
+                    if (hasImage) searchParams.image = '1';
+                    if (hasVideo) searchParams.video = '1';
+                    
+                    var queryString = Object.keys(searchParams).map(key => 
+                        key + '=' + encodeURIComponent(searchParams[key])
+                    ).join('&');
+                    
+                    setTimeout(function() {
+                        $.pjax({
+                            url: '/?' + queryString,
+                            container: '#pjax-container'
+                        });
+                    }, 10);
+                }
+            }
+        ]
+    });
 }
 
 function jumpPage() {

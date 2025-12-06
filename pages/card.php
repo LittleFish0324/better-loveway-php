@@ -28,31 +28,74 @@ try {
                 <div class="mdui-card-header-title"><?php echo $row['confessor']; ?><?php if (!empty($row['class'])) echo " ({$row['class']}班)"; ?></div>
                 <div class="mdui-card-header-subtitle"><?php echo $row['time']; ?></div>
             </div>
-            <div class="mdui-card-media">
-                <?php
-                if (!empty($row['image'])) {
-                ?>
-                    <img style="max-height: 1000px" onclick="if($(this).attr('origin-src') == undefined) { window.open($(this).attr('src')) } else { window.open($(this).attr('origin-src')) }" onerror="randomImage()" src="<?php echo $row['image']; ?>" />
-                <?php
-                } else {
-                ?>
-                    <div class="mdui-divider"></div>
-                <?php } ?>
-                <div class="mdui-card-menu">
-                    <a target="_blank" style="color:#4F4F4F" href="
-                    <?php
-                    if ($REWRITE) {
-                        echo "/";
-                    } else {
-                        echo '/';
+            
+            <!-- 多媒体内容显示区域 -->
+            <?php
+            $has_media = false;
+            
+            // 显示单张图片（旧的兼容）
+            if (!empty($row['image'])) {
+                $has_media = true;
+                echo '<div class="mdui-card-media">';
+                echo '<img style="max-height: 1000px; width: 100%; object-fit: contain;" onclick="if($(this).attr(\'origin-src\') == undefined) { window.open($(this).attr(\'src\')) } else { window.open($(this).attr(\'origin-src\')) }" onerror="randomImage()" src="' . $row['image'] . '" />';
+                echo '</div>';
+            }
+            
+                // 显示多图片
+                if (!empty($row['images'])) {
+                    // 兼容JSON和逗号分隔两种格式
+                    $images = json_decode($row['images'], true);
+                    if (!is_array($images)) {
+                        // 如果不是JSON，尝试按逗号分隔
+                        $images = explode(',', $row['images']);
+                        $images = array_filter($images, function($img) { return !empty(trim($img)); });
                     }
-                    ?>" class="mdui-btn mdui-btn-icon mdui-float-right">
-                        <i class="mdui-icon material-icons">arrow_back</i>
-                    </a>
-                </div>
+                    if (is_array($images) && count($images) > 0) {
+                    $has_media = true;
+                    echo '<div class="mdui-card-content" style="padding-top: 8px; padding-bottom: 8px;">';
+                    echo '<div class="mdui-row">';
+                    foreach ($images as $index => $image) {
+                        echo '<div class="mdui-col-sm-4 mdui-col-xs-6" style="padding: 4px;">';
+                        echo '<img src="' . $image . '" style="width: 100%; height: 200px; object-fit: cover; cursor: pointer; border-radius: 8px; transition: transform 0.2s;" onmouseover="this.style.transform=\'scale(1.02)\'" onmouseout="this.style.transform=\'scale(1)\'" onclick="window.open(\'' . $image . '\')" />';
+                        echo '</div>';
+                    }
+                    echo '</div>';
+                    echo '</div>';
+                }
+            }
+            
+            // 显示视频
+            if (!empty($row['video'])) {
+                $has_media = true;
+                echo '<div class="mdui-card-content" style="padding-top: 8px; padding-bottom: 8px;">';
+                echo '<video controls style="width: 100%; max-height: 400px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" poster="/static/uploads/video-poster.jpg">';
+                echo '<source src="' . $row['video'] . '" type="video/mp4">';
+                echo '您的浏览器不支持视频播放。';
+                echo '</video>';
+                echo '</div>';
+            }
+            
+            // 如果没有多媒体内容，显示分割线
+            if (!$has_media) {
+                echo '<div class="mdui-card-content" style="padding: 0;"><div class="mdui-divider"></div></div>';
+            }
+            ?>
+            
+            <!-- 返回按钮 -->
+            <div class="mdui-card-menu">
+                <a target="_blank" style="color:#4F4F4F" href="
+                <?php
+                if ($REWRITE) {
+                    echo "/";
+                } else {
+                    echo '/';
+                }
+                ?>" class="mdui-btn mdui-btn-icon mdui-float-right">
+                    <i class="mdui-icon material-icons">arrow_back</i>
+                </a>
             </div>
             <div class="mdui-card-primary">
-                <div class="mdui-card-primary-title">To <?php echo $row['to_who']; ?></div>
+                <div class="mdui-card-primary-title">To <?php echo $row['to_who']; ?><?php if (!empty($row['ta_class'])) echo " ({$row['ta_class']}班)"; ?></div>
                 <div class="mdui-card-primary-subtitle">
                     <?php echo $row['introduction']; ?>
                 </div>

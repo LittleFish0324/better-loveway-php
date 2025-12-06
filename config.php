@@ -21,10 +21,16 @@ $VERIFICATION_KEY = "KAGAMINE YES!";
 $UPLOAD_PATH = "../static/uploads/";
 //上传文件API接口（默认可以不用动
 $UPLOAD_API = "/api/upload.php";
-//最大上传文件大小（KB）
-$MAX_UPLOAD_SIZE = 200;
+//最大上传图片大小（MB）
+$MAX_IMAGE_SIZE = 5;
+//最大上传视频大小（MB）
+$MAX_VIDEO_SIZE = 100;
 //是否允许上传文件（可能存在安全风险！
 $UPLOAD_IMAGE = true;
+//允许上传的图片格式
+$ALLOWED_IMAGE_TYPES = ["jpg", "jpeg", "png", "gif"];
+//允许上传的视频格式
+$ALLOWED_VIDEO_TYPES = ["mp4", "avi", "mov", "wmv", "flv", "webm"];
 //单页允许加载的最多表白数
 $PAGEMAX = 10;
 /*
