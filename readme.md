@@ -1,22 +1,36 @@
-# 未知表白墙
+# 更好的未知表白墙
 
-**欢迎使用未知表白墙！这是本程序的README.MD哦！**
+**欢迎使用更好的未知表白墙！这是本程序的README.MD哦！**
+**由于原作者归档了项目无法提交更改，所以我fork了一份，自己用的时候做了一小点优化给大家端上桌了：**
+- 站点优化：加载速度更快，**最快0.3s**加载所有内容：优化数据库查询，静态资源加载，加入缓存机制等。 
+- 表单优化：QQ号设置为可选项、支持配置班级号，项目以本人实际情况（215-262班）配置了，拿来用的时候记得改一下，在`pages/submit.php`里：
+```
+<?php
+// 班级范围设置 - 你可以修改这里的班级范围
+for ($i = 215; $i <= 262; $i++) {
+    echo "<option value=\"$i\">{$i}班</option>";
+}
+```
 
-## 这款表白墙献给镜音双子
+## 原作者说，这款表白墙献给镜音双子，继承TA的意志，我不打算删除这行文字（不过图片好像已经不能正常显示了）。
 
 ![](https://img.llilii.cn/kagamine/p2/78688114_p0.png)
 
+## 详细信息：
+
 ### DEMO
 
-网页链接：https://love.unknown-o.com
+原作DEMO（无法访问）：https://love.unknown-o.com
 
-### 联系作者
+### 联系项目作者
 
-作者邮箱：i#mr-wu.top（把#替换为@）
+原作者邮箱：i#mr-wu.top（把#替换为@）
 
-作者博客：https://www.wunote.cn
+原作者博客：https://www.wunote.cn
 
-### 本项目的官方Git仓库
+现作邮箱：abnermod#163.com（把#替换为@）
+
+### 本项目的原作者提供的官方Git仓库
 
 内网仓库：[https://git.mr-wu.top/UnknownO/loveway-php](https://git.mr-wu.top/UnknownO/loveway-php)
 
@@ -24,9 +38,10 @@ Github仓库：[https://github.com/unknown-o/loveway-php](https://github.com/unk
 
 Gitee仓库：[https://gitee.com/mr-wu-code/loveway-php](https://gitee.com/mr-wu-code/loveway-php)
 
-### 这是一个非常简洁的说明
 
-是我使用我的业余时间随便开发的一款非常简洁却非常美观的表白墙。（献给最可爱的镜音双子）
+### 这是原作者的一个非常简洁的说明
+
+是原作者使用他的业余时间随便开发的一款非常简洁却非常美观的表白墙。（献给最可爱的镜音双子）
 
 ### 程序特性
 
@@ -52,13 +67,11 @@ Gitee仓库：[https://gitee.com/mr-wu-code/loveway-php](https://gitee.com/mr-wu
 
 ### 注意事项
 
-#### 一定要修改默认用户名密码
+#### 一一一一一定要修改默认用户名密码！！！
 
-默认用户名：**kagamine**
+默认用户名：**admin**
 
-默认密码：**kagamine1234**
-
-（不会告诉你这是**镜音双子**的**英文**名称
+默认密码：**change-this-password-123**
 
 ##### 修改方法
 
@@ -80,7 +93,8 @@ Gitee仓库：[https://gitee.com/mr-wu-code/loveway-php](https://gitee.com/mr-wu
 
 #### 关于技术支持
 
-本人不提供任何类型的无偿技术支持。当然反馈bug或新功能建议还是可以通过邮箱联系我的
+原作者本人不提供任何类型的无偿技术支持。当然反馈bug或新功能建议还是可以通过邮箱联系他的
+（不过他好像不管这个项目了，所以提交给abnermod@163.com也没问题，让接手者继续维护）
 
 ### 开源许可证
 
@@ -95,4 +109,5 @@ Gitee仓库：[https://gitee.com/mr-wu-code/loveway-php](https://gitee.com/mr-wu
 有很多方法可以帮助项目：**记录bug**、**提交PR请求**、**报告问题**和**提出优秀的建议**。**即使**您对存储库拥有**推送权限**，也应该在需要时创建**个人fork**并在那里创建功能分支。这样可以保持主存储库的**干净**，并且您的个人工作流程不受影响。我们也对你对这个项目未来的反馈感兴趣。您可以通过**issue** **tracker**提交建议或功能请求。为了使这个过程更有效，我们要求这些包括更多的信息来帮助更清楚地**定义**它们。
 
 There are many ways to contribute to the project: **logging bugs**, **submitting pull requests**, **reporting issues**, and **creating suggestions**. **Even if** you have **push rights** on the repository, you should create a personal fork and create feature branches there when you need them. This keeps the main repository **clean**, and your personal workflow cruft out of sight. We're also interested in your feedback for the future of this project. You can submit a suggestion or feature request through the issue tracker. To make this process more effective, we're asking that these include more information to help **define** them more clearly.
+
 
