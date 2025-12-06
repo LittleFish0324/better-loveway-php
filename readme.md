@@ -1,6 +1,7 @@
 # 更好的未知表白墙
 
 **欢迎使用更好的未知表白墙！这是本程序的README.MD哦！**
+**使用之前，记得导入数据库`localhost.sql`，然后在config.php修改数据库账密让程序可以连接到数据库**
 **由于原作者归档了项目无法提交更改，所以我fork了一份，自己用的时候做了一小点优化给大家端上桌了：**
 - 站点优化：加载速度更快，**最快0.3s**加载所有内容：优化数据库查询，静态资源加载，加入缓存机制等。 
 - 表单优化：QQ号设置为可选项、支持配置班级号，项目以本人实际情况（215-262班）配置了，拿来用的时候记得改一下，在`pages/submit.php`里：
@@ -110,6 +111,7 @@ Gitee仓库：[https://gitee.com/mr-wu-code/loveway-php](https://gitee.com/mr-wu
 有很多方法可以帮助项目：**记录bug**、**提交PR请求**、**报告问题**和**提出优秀的建议**。**即使**您对存储库拥有**推送权限**，也应该在需要时创建**个人fork**并在那里创建功能分支。这样可以保持主存储库的**干净**，并且您的个人工作流程不受影响。我们也对你对这个项目未来的反馈感兴趣。您可以通过**issue** **tracker**提交建议或功能请求。为了使这个过程更有效，我们要求这些包括更多的信息来帮助更清楚地**定义**它们。
 
 There are many ways to contribute to the project: **logging bugs**, **submitting pull requests**, **reporting issues**, and **creating suggestions**. **Even if** you have **push rights** on the repository, you should create a personal fork and create feature branches there when you need them. This keeps the main repository **clean**, and your personal workflow cruft out of sight. We're also interested in your feedback for the future of this project. You can submit a suggestion or feature request through the issue tracker. To make this process more effective, we're asking that these include more information to help **define** them more clearly.
+
 
 
 
