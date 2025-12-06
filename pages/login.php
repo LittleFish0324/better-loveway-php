@@ -47,9 +47,16 @@ if ($templateMode) {
             password: $("#password").val(),
             vcode: vcode,
             timestamp: timestamp
-        }, function() {
-            $("#username").val("")
-            $("#password").val("")
+        }, function(rdata) {
+            // 只有登录成功时才清空表单
+            if (rdata.code == 1) {
+                $("#username").val("")
+                $("#password").val("")
+                // 重新加载页面进入管理后台
+                setTimeout(function() {
+                    window.location.reload();
+                }, 1000);
+            }
         }, true, true, "login-BTN")
     }
 </script>
