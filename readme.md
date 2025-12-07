@@ -3,7 +3,7 @@
 ## 这次更新：
   1.敏感词更新：允许站长自定义敏感词防止不合规词汇，默认在项目的/banword下的所有txt文件里，需要的可以自行更改。
 
-  **注意：最好修改一下敏感词的路径，否则有些人会把这里面的词合成到URL里（例如https://example.com/banword/pron.txt），然后给人恶意举报，网站就封**
+  **注意：最好修改一下敏感词的路径，否则有些人会把这里面的词合成到URL里（例如`https://example.com/banword/pron.txt`），然后给人恶意举报，网站就封**
   
   2.表单优化升级：支持图片视频混发，单图最高5m，视频最高100m。
   
@@ -121,6 +121,7 @@ Gitee仓库：[https://gitee.com/mr-wu-code/loveway-php](https://gitee.com/mr-wu
 有很多方法可以帮助项目：**记录bug**、**提交PR请求**、**报告问题**和**提出优秀的建议**。**即使**您对存储库拥有**推送权限**，也应该在需要时创建**个人fork**并在那里创建功能分支。这样可以保持主存储库的**干净**，并且您的个人工作流程不受影响。我们也对你对这个项目未来的反馈感兴趣。您可以通过**issue** **tracker**提交建议或功能请求。为了使这个过程更有效，我们要求这些包括更多的信息来帮助更清楚地**定义**它们。
 
 There are many ways to contribute to the project: **logging bugs**, **submitting pull requests**, **reporting issues**, and **creating suggestions**. **Even if** you have **push rights** on the repository, you should create a personal fork and create feature branches there when you need them. This keeps the main repository **clean**, and your personal workflow cruft out of sight. We're also interested in your feedback for the future of this project. You can submit a suggestion or feature request through the issue tracker. To make this process more effective, we're asking that these include more information to help **define** them more clearly.
+
 
 
 
